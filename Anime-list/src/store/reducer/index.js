@@ -1,22 +1,18 @@
 export const initialState = {
-  anime: [],
   anime_list: [],
   anime_detail: [],
-  popular_anime: [],
-  trending_anime: [],
-  top_rated_anime: [],
-  upcoming_anime: [],
-  search_anime: [],
+  top_10_anime: [],
+  page: 1,
+  search_anime: {
+
+  },
+  genre: [],
+  collection : []
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_ANIME":
-      console.log("anjayyyyyy");
-      return {
-        ...state,
-        anime: action.payload,
-      };
+
     case "SET_ANIME_LIST":
       return {
         ...state,
@@ -27,32 +23,32 @@ export const reducer = (state = initialState, action) => {
         ...state,
         anime_detail: action.payload,
       };
-    case "SET_POPULAR_ANIME":
+    case "SET_TOP_10_ANIME":
       return {
         ...state,
-        popular_anime: action.payload,
+        top_10_anime: action.payload,
       };
-    case "SET_TRENDING_ANIME":
+    case "SET_COLLECTION":
       return {
         ...state,
-        trending_anime: action.payload,
+        collection: action.payload,
       };
-    case "SET_TOP_RATED_ANIME":
+    case "SET_PAGE":
       return {
         ...state,
-        top_rated_anime: action.payload,
-      };
-    case "SET_UPCOMING_ANIME":
-      return {
-        ...state,
-        upcoming_anime: action.payload,
+        page: action.payload,
       };
     case "SET_SEARCH_ANIME":
       return {
         ...state,
         search_anime: action.payload,
       };
-
+    case "SET_GENRE":
+      return {
+        ...state,
+        genre: action.payload,
+      };
+      
     default:
       return state;
   }

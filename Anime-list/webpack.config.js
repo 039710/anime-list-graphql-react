@@ -4,6 +4,8 @@ module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/"
   },
   mode: "development",
   module: {
@@ -17,6 +19,14 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack", "url-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|css|eot|ttf)$/,
+        loader: "url-loader",
       },
     ],
   },
