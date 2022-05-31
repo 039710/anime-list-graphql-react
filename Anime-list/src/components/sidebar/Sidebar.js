@@ -54,7 +54,7 @@ function Sidebar() {
         </Span>
       <Column padding={"10px 0px 0px 0px"} overflowY={"scroll"} height={"800px"}>
         {/* anime-item */}
-        <Anime size={"small"} />
+        {/* <Anime size={"small"} /> */}
       </Column>
     </Column>
   );

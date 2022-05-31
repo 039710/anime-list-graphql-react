@@ -22,6 +22,5 @@ const photoName = [
 ];
 export const generateProfilePict = ()=>{
   const index = Math.floor(Math.random() * photoName.length);
-  console.log(index)
   return photoName[index].path;
 }

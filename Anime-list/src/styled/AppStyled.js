@@ -28,10 +28,15 @@ export const Column = styled.div`
   background: ${(props) => convertColor(props.background) || "none"};
   color: ${(props) => convertColor(props.color) || "none"};
   margin: ${(props) => props.margin || "0px"};
-  overflow-y: ${(props) => props.overflowY || "scroll"};
+  overflow-y: ${(props) => props.overflowY || "hidden"};
   overflow-x: ${(props) => props.overflowX || "hidden"};
   justify-content: ${(props) => props.justify || "flex-start"};
+  flex-wrap: ${(props) => props.wrap || "nowrap"};
   position : ${(props) => props.position || "relative"};
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 `;
 
 export const Row = styled.div`
@@ -46,33 +51,42 @@ export const Row = styled.div`
   justify-content: ${(props) => props.justify || "flex-start"};
   margin: ${(props) => props.margin || "0px"};
   flex-wrap: ${(props) => props.wrap || "nowrap"};
+  position: ${(props) => props.position || "relative"};
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
 `;
 
 
 export const Button = styled.button`
   width: auto;
   padding: ${(props) => props.px || "5px"};
+  padding: ${(props) => props.padding || "5px"};
+  margin: ${(props) => props.margin || "0px"};
   border-radius : "5px";
   color : ${(props) => convertColor(props.color) || "none"};
   font-weight: bolder;
+  cursor: pointer;
 `
 
 export const Search = styled.input`
-  
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "20px"};
   border: none;
   border-radius: 5px;
-  padding: 0 10px;
+  margin: ${(props) => props.margin || "0 10px"};
   font-size: 16px;
   outline: none;
-  background: ${(props) => convertColor(props.background) || "none"};
+  background: ${(props) => convertColor(props.background) || "white"};
   color: ${(props) => convertColor(props.color) || "none"};
   margin-bottom: 10px;
-  padding: 5px;
+  padding: ${(props) => props.padding || "5px"};
+  font-weight: ${(props) => props.fontWeight || "normal"};
   &:focus {
     background: ${(props) => convertColor(props.focusBackground) || "none"};
-    border: 1px solid ${(props) => convertColor(props.focusColor) || mainColor["lightGray"]};
+    border: 1px solid
+      ${(props) => convertColor(props.focusColor) || mainColor["lightGray"]};
   }
 `;
 
@@ -90,13 +104,14 @@ export const Profile = styled.img`
   border-radius: 50% !important;
   cursor: pointer;
   src: ${(props) => props.src || "none"};
-  fit: cover;
+  object-fit: cover;
 `  
 export const Image = styled.img`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
   border : ${(props) => props.border || `1px solid ${mainColor["lightGray"]};`};
   border-radius: ${(props) => props.borderRadius || "10px"};
+  object-fit: cover;
   cursor : pointer;
   src: ${(props) => props.src || "none"};
 `  
@@ -109,6 +124,8 @@ export const Span = styled.span`
   margin : ${(props) => props.margin || "0"};
   text-align: ${(props) => props.textAlign || "left"};
   cursor : ${(props) => props.cursor || "normal"};
+  width : ${(props) => props.width || "100%"};
+  padding : ${(props) => props.padding || "0"};
 
 `
 
@@ -178,4 +195,34 @@ export const Select = styled.select`
     background: ${(props) => convertColor(props.focusBackground) || "none"};
     border: 1px solid ${(props) => convertColor(props.focusColor) || "lightGray"};
   }
+`;
+
+export const Modal = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${(props) =>
+    convertColor(props.background) || mainColor["lightGray"]};
+  opacity: 0.9;
+  border-radius:10px;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-start;
+  overflow: auto;
+  visibility: ${(props) => (props.show == true ? "unset" : "hidden")};
+`;
+
+export const Badge = styled.span`
+  background: ${(props) => convertColor(props.background) || "none"};
+  color: ${(props) => convertColor(props.color) || "none"};
+  font-weight: ${(props) => props.fontWeight || "normal"};
+  font-size: ${(props) => props.fontSize || "16px"};
+  margin : ${(props) => props.margin || "0px 5px"};
+  text-align: ${(props) => props.textAlign || "left"};
+  cursor : ${(props) => props.cursor || "pointer"};
+  width: ${(props) => props.width || "100%"};
+  padding : ${(props) => props.padding || "0px 10px"};
+  border-radius: ${(props) => props.borderRadius || "10px"};
 `;

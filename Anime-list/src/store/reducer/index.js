@@ -2,17 +2,19 @@ export const initialState = {
   anime_list: [],
   anime_detail: [],
   top_10_anime: [],
+  status : "",
   page: 1,
-  search_anime: {
+  search_anime: "",
+  year: new Date().getFullYear +"%",
+  season: "",
+  pageInfo:{
 
   },
-  genre: [],
   collection : []
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-
     case "SET_ANIME_LIST":
       return {
         ...state,
@@ -43,12 +45,27 @@ export const reducer = (state = initialState, action) => {
         ...state,
         search_anime: action.payload,
       };
-    case "SET_GENRE":
+    case "SET_PAGE_INFO":
       return {
         ...state,
-        genre: action.payload,
+        pageInfo: action.payload,
       };
-      
+    case "SET_YEAR":
+      return {
+        ...state,
+        year: action.payload + "%",
+      };
+    case "SET_SEASON":
+      return {
+        ...state,
+        season: action.payload,
+      };
+    case "SET_STATUS":
+      return {
+        ...state,
+        status: action.payload,
+      };
+
     default:
       return state;
   }
