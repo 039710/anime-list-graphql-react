@@ -1,127 +1,113 @@
-import React,{useEffect, useState} from 'react'
-import {
-  Row,
-  Column,
-  Button,
-  Search,
-  Line,
-  Profile,
-  Span,
-  Image,
-  Select,
-  Option,
-} from "../../styled/AppStyled";
-import {appContext} from "../../store"
-import {useContext} from "react"
-import Anime from '../anime/Anime';
-function List(props) {
-  const [state, dispatch] = useContext(appContext)
-  const {page:currentPage,search:toSearch,anime_list,pageInfo} = state
-  const [genre, setGenre] = useState("")
-  const [year, setYear] = useState(new Date().getFullYear())
-  const [search, setSearch] = useState("")
+import React, { useEffect, useState } from "react";
+import { Row, Column, Button, Search, Span } from "../../styled/AppStyled";
+import { appContext } from "../../store";
+import { useContext } from "react";
+import Card from "../anime/Card";
+import Navbar from "../headerbar/Navbar";
+import Pagination from "../pagination/Pagination";
 
-  const handlePage = (page) => {
-    dispatch({"type":"SET_PAGE",payload:page})
-  }
-  useEffect(() => {
-    console.log(anime_list,'123')
-  }, [anime_list]);
+function List() {
+  const [state, dispatch] = useContext(appContext);
+  const { search: toSearch, anime_list,collection } = state;
+  const [search, setSearch] = useState("");
 
+  useEffect(() => {}, [anime_list]);
 
   return (
-    <Column background={"#202020"} position={"relative"}>
-      <Span
-        color={"lightGreen"}
-        fontWeight={"bold"}
-        fontSize={"24px"}
-        textAlign={"center"}
-        padding={"20px 0"}
+    <Column padding={"0px"}>
+      <Navbar />
+      <Column
+        background={"#E8F9FD"}
+        justify={"center"}
+        align={"center"}
+        padding={"0px"}
       >
-        All time popular
-      </Span>
-      <Column wrap={"wrap"} justify={"flex-start"} align={"flex-start"}>
-        {anime_list.length > 0 ? (
-          anime_list.map((anime, index) => {
-            console.log(anime, index);
-            return (
-              <Anime
-                data={{
-                  bannerImage: anime.bannerImage,
-                  title: anime.title.userPreferred,
-                  averageScore: anime.averageScore,
-                }}
-                key={index}
-                size={"big"}
-              />
-            );
-          })
-        ) : (
-          <>Querying</>
-        )}
-      </Column>
-      {anime_list.length > 0 && (
-        // Pagination
         <Row
+          justify={"flex-start"}
+          align={"flex-start"}
           height={"auto"}
-          justify={"center"}
-          align={"center"}
-          padding={"10px 0px"}
-          margin={"10px 0px"}
+          width={"auto"}
+          wrap={"wrap"}
         >
-          <Button
-            background={"#202020"}
+          <Span
             color={"lightGreen"}
-            fontSize={"16px"}
             fontWeight={"bold"}
-            padding={"10px 20px"}
-            margin={"0px 10px"}
-            onClick={() => handlePage(currentPage - 1)}
-            disabled={currentPage === 1}
+            fontSize={"24px"}
+            textAlign={"center"}
+            width={"200px"}
+            padding={"10px 0 0 0"}
           >
-            {"<"}
-          </Button>
-          {pageInfo.total > 1 && (
-            // create go to page
-            <Column width={"auto"} height={"auto"}>
-              <Row height={"auto"} width={"auto"} justify={"center"}>
-                <Span fontSize={"20px"} color={"white"} width={"auto"}>
-                  Go To Page
-                </Span>
-                <Search
-                  type="number"
-                  name="goto"
-                  value={currentPage}
-                  background={"lightGrey"}
-                  color={"lightGreen"}
-                  focusBackground={"white"}
-                  onChange={(e) => handlePage(e.target.value)}
-                  width={"150px"}
-                  padding={"5px"}
-                  fontWeight={"bold"}
-                />
-              </Row>
-            </Column>
-          )}
-
-          <Button
-            background={"#202020"}
-            color={"lightGreen"}
-            fontSize={"16px"}
-            fontWeight={"bold"}
-            padding={"10px 20px"}
-            margin={"0px 10px"}
-            onClick={() => handlePage(currentPage + 1)}
+            All time popular
+          </Span>
+          <Row
+            justify={"flex-end"}
+            align={"center"}
+            width={"auto"}
+            height={"auto"}
+            padding={"5px 15px"}
+            wrap={"wrap"}
           >
-            {">"}
-          </Button>
+            <Span fontSize={"18px"} margin={"0 10px 0 0"}>
+              Search anime{" "}
+            </Span>
+            <Search
+              placeholder="naruto"
+              background={"white"}
+              focusBackground={"#E8F9FD"}
+              width={"200px"}
+              padding={"5px 10px"}
+              type="text"
+              onChange={(e) =>
+                dispatch({ type: "SET_SEARCH_ANIME", payload: e.target.value })
+              }
+            ></Search>
+          </Row>
         </Row>
-      )}
-      <Span textAlign={"center"} fontWeight={"bold"} fontSize={"14px"} padding={"10px"}>
-        {currentPage} out of {pageInfo.total} pages
-      </Span>
+        {/* End of Navbar */}
+        <Column
+          width={"75%"}
+          height={"auto"}
+          position={"relative"}
+          border={"1px solid gray"}
+          overflowY={"scroll"}
+        >
+          <Row
+            wrap={"wrap"}
+            justify={"flex-start"}
+            align={"flex-start"}
+            width={"100%"}
+          >
+            {anime_list.length > 0 ? (
+              anime_list.map((anime, index) => {
+                return (
+                  <Card
+                    data={{
+                      bannerImage: anime.bannerImage,
+                      coverImage: anime?.coverImage?.large,
+                      title: anime.title.userPreferred,
+                      averageScore: anime.averageScore,
+                      id: anime.id,
+                      season: anime.season,
+                      seasonYear: anime.seasonYear,
+                      format: anime.format,
+                      genres: anime.genres,
+                      episodes: anime.episodes,
+                      studio: anime?.studios?.edges[0]?.node.name,
+                    }}
+                    key={index}
+                    size={"big"}
+                  />
+                );
+              })
+            ) : (
+              <>Querying</>
+            )}
+          </Row>
+          {anime_list.length > 0 && <Pagination />}
+        </Column>
+      </Column>
     </Column>
   );
 }
 
-export default List
+export default List;

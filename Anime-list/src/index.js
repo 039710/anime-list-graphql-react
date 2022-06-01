@@ -7,6 +7,7 @@ import client from "./graphql/config/index";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DetailAnime from "./pages/DetailAnime";
 import Collection from "./pages/Collection";
+import CollectionList from "./pages/CollectionList";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ApolloProvider client={client}>
@@ -16,8 +17,8 @@ root.render(
       <Router>
         <Routes>
           <Route exact path="/detail/:id" element={<DetailAnime />} />
-          <Route path="detail" element={<DetailAnime />} />
-          <Route path="/collection" element={<Collection />} />
+          <Route path="/collection/:name" element={<Collection />} />
+          <Route path="/collection" element={<CollectionList />} />
           <Route path = '/' element={<App />} />
         </Routes>
       </Router>
