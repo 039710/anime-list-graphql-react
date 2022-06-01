@@ -339,15 +339,28 @@ function CollectionList() {
             );
           })}
           {collection.length === 0 && (
-            <Span
-              fontSize={"24px"}
-              fontWeight={"bold"}
-              color={"lightGray"}
-              textAlign={"center"}
-              width={"100%"}
-            >
-              Your have no collection yet
-            </Span>
+            <Row width={"100%"} justify={"space-around"} align={"center"}>
+              <Span
+                fontSize={"24px"}
+                fontWeight={"bold"}
+                color={"lightGray"}
+                textAlign={"center"}
+                width={"auto"}
+              >
+                Your have no collection yet
+              </Span>
+              <Badge
+                color={"white"}
+                fontWeight={"bold"}
+                background={"lightGreen"}
+                padding={"5px 10px"}
+                onClick={(e) => {
+                  setShowModalAdd(true);
+                }}
+              >
+                Add Collection
+              </Badge>
+            </Row>
           )}
         </Column>
       </Column>

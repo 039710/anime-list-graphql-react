@@ -7,37 +7,8 @@ export const initialState = {
   year: new Date().getFullYear + "%",
   pageInfo: {},
   collection: [
-    {
-      name: "test1",
-      data: [
-        {
-          bannerImage:
-            "https://s4.anilist.co/file/anilistcdn/media/anime/banner/124194-IB2X2IdALUYB.jpg",
-          coverImage:
-            "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx124194-pWfBqp3GgjOx.jpg",
-          title: "Fruits Basket: The Final",
-          averageScore: 91,
-          id: 124194,
-          season: "SPRING",
-          seasonYear: 2021,
-          format: "TV",
-          genres: [
-            "Comedy",
-            "Drama",
-            "Psychological",
-            "Romance",
-            "Slice of Life",
-            "Supernatural",
-          ],
-          episodes: 13,
-          studio: "TMS Entertainment",
-        },
-      ],
-    },
-    {
-      name: "test2",
-      data: [],
-    },
+    
+    
   ],
 };
 
