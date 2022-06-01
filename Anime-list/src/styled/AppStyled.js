@@ -271,6 +271,7 @@ export const MoreInfo = styled.div`
   overflow: auto;
   padding: 5px;
   visibility: ${(props) => (props.show == true ? "unset" : "hidden")};
+  overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
