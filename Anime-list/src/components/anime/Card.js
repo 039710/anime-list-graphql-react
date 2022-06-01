@@ -344,7 +344,7 @@ function Card({ remove, data, handleRemoveItem }) {
                 {genres.map((genre, index) => (
                   <Badge
                     key={index}
-                    margin={"25px"}
+                    margin={"5px"}
                     color={"white"}
                     fontSize={"14px"}
                     background={"black"}
