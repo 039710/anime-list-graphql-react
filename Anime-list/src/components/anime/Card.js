@@ -249,7 +249,7 @@ function Card({ remove, data, handleRemoveItem }) {
       <Row
         justify={"flex-start"}
         align={"flex-start"}
-        height={"340px"}
+        height={"380px"}
         width={"auto"}
         margin={"0px 0px 5px 0px"}
       >
@@ -294,10 +294,11 @@ function Card({ remove, data, handleRemoveItem }) {
           <MoreInfo show={show}>
             <Column
               width={"100%"}
-              height={"auto"}
+              height={"100%"}
               overflowY={"hidden"}
               justify={"flex-start"}
               align={"flex-start"}
+              padding={"0px"}
             >
               <Span
                 fontWeight={"bold"}
