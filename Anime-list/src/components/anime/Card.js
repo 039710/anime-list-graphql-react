@@ -312,7 +312,7 @@ function Card({ remove, data, handleRemoveItem }) {
                 width={"100%"}
                 height={"0px"}
                 color={"lightGray"}
-                margin={"10px 0px"}
+                margin={"5px 0px"}
               />
               <Row width={"100%"} height={"auto"}>
                 <Span fontWeight={"bold"} color={"black"}>
@@ -338,13 +338,13 @@ function Card({ remove, data, handleRemoveItem }) {
                 width={"100%"}
                 height={"0px"}
                 color={"lightGray"}
-                margin={"10px 0px"}
+                margin={"5px 0px"}
               />
               <Row width={"100%"} height={"auto"} wrap={"wrap"}>
                 {genres.map((genre, index) => (
                   <Badge
                     key={index}
-                    margin={"5px"}
+                    margin={"25px"}
                     color={"white"}
                     fontSize={"14px"}
                     background={"black"}
