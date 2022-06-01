@@ -5,9 +5,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    publicPath: "/"
+    // publicPath: "/",
   },
-  mode: "development",
+  mode: "production",
+  performance: {
+    maxEntrypointSize: 1212000,
+    maxAssetSize: 1212000,
+  },
   module: {
     rules: [
       {

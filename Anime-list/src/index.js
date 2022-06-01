@@ -4,7 +4,7 @@ import App from "./pages/App";
 import {AnimeProvider } from "./store/index";
 import { ApolloProvider } from "@apollo/client/react";
 import client from "./graphql/config/index";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import DetailAnime from "./pages/DetailAnime";
 import Collection from "./pages/Collection";
 import CollectionList from "./pages/CollectionList";
