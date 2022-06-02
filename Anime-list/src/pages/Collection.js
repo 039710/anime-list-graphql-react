@@ -76,7 +76,7 @@ function Collection() {
       <Modal
         background={"white"}
         width={"400px"}
-        height={"25%"}
+        height={"250px"}
         show={showModalEdit}
       >
         <Column>

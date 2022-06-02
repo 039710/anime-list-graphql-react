@@ -51,6 +51,7 @@ function CollectionList() {
     newCollection[selectedIndex].name = newName;
 
     dispatch({ type: "SET_COLLECTION", payload: newCollection });
+    localStorage.setItem("collection", JSON.stringify(newCollection));
     setNewName("");
     setSelectedIndex(null);
     setShowModalEdit(false);
