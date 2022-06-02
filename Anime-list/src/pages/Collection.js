@@ -131,7 +131,7 @@ function Collection() {
           padding={"0px"}
           height={"100%"}
         >
-          <Row width={"400px"} align={"center"} justify={"center"}>
+          <Row width={"auto"} align={"center"} justify={"center"}>
             <Span
               textAlign={"center"}
               width={"100%"}
@@ -147,6 +147,7 @@ function Collection() {
               fontWeight={"bold"}
               background={"lightGreen"}
               padding={"5px 15px"}
+              margin={"0px 0px 0px 20px"}
               onClick={(e) => setShowModalEdit(true)}
             >
               Edit

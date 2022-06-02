@@ -193,7 +193,7 @@ function Card({ remove, data, handleRemoveItem }) {
               >
                 You have no collections, create one before adding
               </Span>
-              <Row>
+              <Column>
                 <Span
                   textAlign={"center"}
                   width={"auto"}
@@ -209,13 +209,13 @@ function Card({ remove, data, handleRemoveItem }) {
                   width={"200px"}
                   onChange={(e) => setCollectionName(e.target.value)}
                 />
-                <Button onClick={handleAddCollection}>Create and add</Button>
-              </Row>
+                <Button margin={"0 0 0 10px"} onClick={handleAddCollection}>Create and add</Button>
+              </Column>
             </Column>
           )}
           {toggleCreate && (
             <>
-              <Row>
+              <Column>
                 <Span
                   textAlign={"center"}
                   width={"auto"}
@@ -231,8 +231,10 @@ function Card({ remove, data, handleRemoveItem }) {
                   width={"200px"}
                   onChange={(e) => setCollectionName(e.target.value)}
                 />
-                <Button onClick={handleAddCollection}>Create and add</Button>
-              </Row>
+                <Button margin={"0 0 0 10px"} onClick={handleAddCollection}>
+                  Create and add
+                </Button>
+              </Column>
             </>
           )}
           <Line height={"0px"} margin={"10px 0"} />
