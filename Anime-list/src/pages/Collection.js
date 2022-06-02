@@ -158,7 +158,7 @@ function Collection() {
             padding={"20px 5px"}
             width={"75%"}
           >
-            <Column width={"55%"} background={"white"}>
+            <Column width={"auto"} background={"white"}>
               <Line height={"0px"} margin={"10px 0"} />
               <Column justify={"center"} align={"center"}>
                 <Span fontSize={"24px"} fontWeight={"bold"}>

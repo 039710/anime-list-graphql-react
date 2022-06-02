@@ -89,9 +89,9 @@ function Card({ remove, data, handleRemoveItem }) {
       };
       newCollection.push(temp);
       dispatch({ type: "SET_COLLECTION", payload: newCollection });
-      setShowModal(false);
       localStorage.setItem("collection", JSON.stringify(newCollection));
-      alert("successfully added to your collection");
+      setShowModal(false);
+      alert("successfully added to your collection.");
       setToggleCreate(false);
     } else {
       alert("Collection already exist");
@@ -115,7 +115,7 @@ function Card({ remove, data, handleRemoveItem }) {
 
   return (
     <>
-      <Modal show={showModal} width={"500px"} overflowY={"scorll"}>
+      <Modal show={showModal} width={"300px"} overflowY={"scorll"}>
         <Span
           fontSize={"24px"}
           fontWeight={"bold"}
@@ -239,7 +239,7 @@ function Card({ remove, data, handleRemoveItem }) {
           <Row justify={"space-between"}>
             <Button onClick={(e) => setShowModal(false)}>Close</Button>
             {collection.length >= 1 && (
-              <Button margin={"0 5px"} onClick={(e) => setToggleCreate(true)}>
+              <Button margin={"0 10px"} onClick={(e) => setToggleCreate(true)}>
                 Create new collection?
               </Button>
             )}

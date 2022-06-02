@@ -239,7 +239,7 @@ function CollectionList() {
         justify={"center"}
       >
         {collection.length !== 0 && (
-          <Row width={"80%"} justify={"space-around"} align={"center"}>
+          <Row width={"auto"} justify={"space-around"} align={"center"}>
             <Span
               fontSize={"24px"}
               fontWeight={"bold"}
@@ -261,7 +261,7 @@ function CollectionList() {
             </Badge>
           </Row>
         )}
-        <Column padding={"10px"} width={"50%"} overflowY={"scroll"}>
+        <Column padding={"10px"} width={"1000px"} overflowY={"scroll"}>
           {collection?.map((item, index) => {
             return (
               <Row
