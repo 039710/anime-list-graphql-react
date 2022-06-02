@@ -340,13 +340,13 @@ function CollectionList() {
             );
           })}
           {collection.length === 0 && (
-            <Row width={"100%"} justify={"space-around"} align={"center"}>
+            <Row width={"100%"} justify={"space-around"} align={"center"} wrap={"wrap"}>
               <Span
                 fontSize={"24px"}
                 fontWeight={"bold"}
                 color={"lightGray"}
                 textAlign={"center"}
-                width={"auto"}
+                width={"100%"}
               >
                 Your have no collection yet
               </Span>
