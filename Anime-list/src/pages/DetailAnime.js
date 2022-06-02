@@ -52,15 +52,15 @@ function DetailAnime() {
           background={"white"}
         >
           <Banner src={anime_detail.bannerImage} opacity={0.8} />
-          <Row padding={"-60px 200px"} position={"relative"} width={"100%"}>
+          <Row padding={"-60px auto"} position={"relative"} width={"100%"}>
             <Image
               src={anime_detail?.coverImage?.large}
               height={"250px"}
               width={"200px"}
               top={"-60px"}
-              left={"30px"}
+              left={"10px"}
             />
-            <Column padding={"20px 50px"}>
+            <Column padding={"20px 20px"} width={"100%"}>
               <Span fontSize={"24px"} fontWeight={"bold"}>
                 {anime_detail?.title?.userPreferred}
               </Span>
@@ -70,7 +70,7 @@ function DetailAnime() {
                   {anime_detail?.description?.split("</i>")[1]}
                 </Span>
               </Span>
-              <Row>
+              <Row wrap={"wrap"}>
                 <Span margin={"5px 5px"}>
                   Duration : {anime_detail.duration + "mins"}
                 </Span>
@@ -78,13 +78,13 @@ function DetailAnime() {
                   Episode : {anime_detail.episodes}
                 </Span>
               </Row>
-              <Row>
+              <Row wrap={"wrap"}>
                 <Span margin={"5px 5px"}>Status : {anime_detail.status}</Span>
                 <Span margin={"5px 5px"}>
                   Score : {anime_detail.averageScore}
                 </Span>
               </Row>
-              <Row>
+              <Row wrap={"wrap"}>
                 <Span margin={"5px 5px"}>
                   Country Origin : {anime_detail.countryOfOrigin}
                 </Span>
