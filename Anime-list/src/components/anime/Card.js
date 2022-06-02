@@ -68,6 +68,7 @@ function Card({ remove, data, handleRemoveItem }) {
     }
     setShowModal(false);
     localStorage.setItem("collection", JSON.stringify(newCollection));
+    // console.log(newCollection);
   };
 
   const handleAddCollection = () => {
@@ -82,37 +83,36 @@ function Card({ remove, data, handleRemoveItem }) {
       return alert("Please enter collection name");
     }
     if (collectionIndex === -1) {
-      const newCollection = {
+      const temp = {
         name: collectionName,
         data: [data],
       };
-      dispatch({ type: "ADD_COLLECTION", payload: newCollection });
+      newCollection.push(temp);
+      dispatch({ type: "SET_COLLECTION", payload: newCollection });
       setShowModal(false);
-      alert("successfully added to your collection");
       localStorage.setItem("collection", JSON.stringify(newCollection));
+      alert("successfully added to your collection");
+      setToggleCreate(false);
     } else {
-      // setShowModal(false);
       alert("Collection already exist");
     }
+    // console.log(newCollection);
   };
   useEffect(() => {
     // check if anime already exist in collection
     const collectionsName = [];
     const temp = collection.filter(
       (collection) =>
-        collection.data.findIndex((anime) => anime.id === data.id) > -1
+        collection?.data?.findIndex((anime) => anime.id === data.id) > -1
     );
     if (temp.length !== 0) {
       temp.forEach((collection, index) => {
         collectionsName.push(collection.name);
       });
       setSavedIn([...collectionsName]);
-      // const name = collection[animeIndex].name;
-      // const newSavedIn = [...savedIn];
-      // newSavedIn.push(name);
-      // setSavedIn(newSavedIn);
     }
   }, [collection]);
+
   return (
     <>
       <Modal show={showModal} width={"500px"} overflowY={"scorll"}>
@@ -171,7 +171,7 @@ function Card({ remove, data, handleRemoveItem }) {
                       >
                         Collection{" "}
                         <Span fontSize={"18px"} fontWeight={"bold"}>
-                          {item.name}
+                          {item?.name}
                         </Span>
                       </Span>
                     </Row>
@@ -238,7 +238,7 @@ function Card({ remove, data, handleRemoveItem }) {
           <Line height={"0px"} margin={"10px 0"} />
           <Row justify={"space-between"}>
             <Button onClick={(e) => setShowModal(false)}>Close</Button>
-            {!toggleCreate && (
+            {collection.length >= 1 && (
               <Button margin={"0 5px"} onClick={(e) => setToggleCreate(true)}>
                 Create new collection?
               </Button>
@@ -374,7 +374,7 @@ function Card({ remove, data, handleRemoveItem }) {
                         color={"black"}
                         width={"auto"}
                         margin={"5px"}
-                        onClick={(e) => navigator(`/collection/${item}`)}
+                        onClick={(e) => navigator(`/collection/${index}`)}
                       >
                         {item}
                       </Badge>

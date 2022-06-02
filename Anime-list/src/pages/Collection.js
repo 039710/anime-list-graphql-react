@@ -29,7 +29,7 @@ function Collection() {
     // check if special chars exist
     if (newName.match(/[^a-zA-Z0-9 ]/g)) {
       return alert("Special characters are not allowed");
-    } else if(newName == ""){
+    } else if (newName == "") {
       return alert("Please enter a name");
     }
     if (newCollection.find((item) => item.name == newName)) {
@@ -37,6 +37,7 @@ function Collection() {
     }
     newCollection[currentIndex].name = newName;
     dispatch({ type: "SET_COLLECTION", payload: newCollection });
+
     localStorage.setItem("collection", JSON.stringify(newCollection));
     setNewName("");
     setCollectionName(newName);
@@ -54,14 +55,20 @@ function Collection() {
     dispatch({ type: "SET_COLLECTION", payload: newCollectionList });
     localStorage.setItem("collection", JSON.stringify(newCollectionList));
   };
-  
+
   useEffect(() => {
     let index = location.pathname.split("/")[2];
-    console.log('ini index', index)
+    console.log("ini index", index);
     setCurrentIndex(index);
     setCollectionName(collection[index]?.name);
-  }, []);
+  }, [location]);
 
+  useEffect(() => {
+    let index = location.pathname.split("/")[2];
+    console.log("ini index", index);
+    setCurrentIndex(index);
+    setCollectionName(collection[index]?.name);
+  });
 
   return (
     <Column padding={"0px"}>

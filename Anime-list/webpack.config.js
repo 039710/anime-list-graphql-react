@@ -7,7 +7,8 @@ module.exports = {
     filename: "bundle.js",
     // publicPath: "/",
   },
-  mode: "production",
+  // mode: "production",
+  mode: "development",
   performance: {
     maxEntrypointSize: 1212000,
     maxAssetSize: 1212000,

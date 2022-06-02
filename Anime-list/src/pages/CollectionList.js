@@ -49,7 +49,7 @@ function CollectionList() {
       alert("Collection name already exist");
     }
     newCollection[selectedIndex].name = newName;
-    localStorage.setItem("collection", JSON.stringify(newCollection));
+
     dispatch({ type: "SET_COLLECTION", payload: newCollection });
     setNewName("");
     setSelectedIndex(null);
@@ -71,7 +71,7 @@ function CollectionList() {
       data: [],
     });
     dispatch({ type: "SET_COLLECTION", payload: newCollection });
-    localStorage.setItem("collection", JSON.stringify(newCollection));
+
     setCollectionName("");
     setShowModalAdd(false);
   };
@@ -262,7 +262,7 @@ function CollectionList() {
           </Row>
         )}
         <Column padding={"10px"} width={"50%"} overflowY={"scroll"}>
-          {collection.map((item, index) => {
+          {collection?.map((item, index) => {
             return (
               <Row
                 width={"100%"}
