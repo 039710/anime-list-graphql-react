@@ -11,10 +11,11 @@ function Pagination() {
   return (
     <Row
       height={"auto"}
-      justify={"center"}
+      justify={"start"}
       align={"center"}
       padding={"10px 0px"}
       margin={"10px 0px"}
+      wrap={"wrap"}
     >
       <Button
         background={"#202020"}
@@ -30,9 +31,8 @@ function Pagination() {
       </Button>
       {pageInfo.total > 1 && (
         // create go to page
-        <Column width={"auto"} height={"auto"}>
-          <Row height={"auto"} width={"auto"} justify={"center"}>
-            <Span fontSize={"20px"} color={"grey"} width={"auto"}>
+          <Row height={"auto"} width={"auto"} justify={"start"} wrap={"wrap"}>
+            <Span fontSize={"20px"} padding={"0px 0px 0px 10px"}color={"grey"} width={"auto"}>
               Go To Page
             </Span>
             <Search
@@ -48,7 +48,6 @@ function Pagination() {
               fontWeight={"bold"}
             />
           </Row>
-        </Column>
       )}
 
       <Button
