@@ -179,7 +179,7 @@ function CollectionList() {
       </Modal>
       <Modal
         show={showModalAdd}
-        width={"500px"}
+        width={"400px"}
         border={"1px solid black"}
         background={"white"}
       >
@@ -194,11 +194,11 @@ function CollectionList() {
         </Span>
         <Line height={"0px"} />
         <Column padding={"10px 0"} overflowX={"hidden"}>
-          <Row padding={"0"}>
+          <Row padding={"0"} wrap={"wrap"}>
             <Span
               textAlign={"center"}
               width={"auto"}
-              padding={"5px 0"}
+              padding={"5px 0 0 5px"}
               color={"lightGray"}
               fontSize={"18px"}
             >
@@ -207,7 +207,7 @@ function CollectionList() {
             <Search
               type="text"
               placeholder="sci-fi"
-              width={"200px"}
+              width={"150px"}
               onChange={(e) => setCollectionName(e.target.value)}
             />
             <Button
@@ -217,7 +217,7 @@ function CollectionList() {
               padding={"5px 10px"}
               onClick={handleAddCollection}
             >
-              Create and add
+              Create
             </Button>
           </Row>
           <Button
